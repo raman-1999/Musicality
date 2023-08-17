@@ -1,0 +1,61 @@
+version:  '3.9'
+services:
+  track-service:
+    image:  track_image
+    container_name: track-service
+    build:  challenge/
+    restart:  always
+    networks:
+      - user-network
+    ports:
+      - 8090:8090
+    depends_on:
+      - mongoService
+
+
+  mongoService:
+    image:  mongo:latest
+    container_name: mongoService
+    ports:
+      - 27017:27017
+    networks:
+      - user-network
+
+  authenticationService:
+    image:  authentication_image
+    container_name: authenticationService
+    build:  UserAuthenticationService/
+    restart:  always
+    networks:
+      - user-network
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysqlService
+
+
+  mysqlService:
+    image:  mysql:latest
+    container_name: mysqlService
+    networks:
+      - user-network
+    ports:
+      - 3306:3306
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  api-gateway:
+    container_name: api-gateway
+    build: ApiGateway/
+    networks:
+      - mynetwork
+    ports:
+      - "9000:9000"
+
+networks:
+  user-network:
+    driver: bridge

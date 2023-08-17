@@ -1,0 +1,44 @@
+<div id="login">
+    <div id="form">
+        <form (ngSubmit)="login()" [formGroup]="loginDetails">
+            <div id="logo">
+                <i class="fa-brands fa-napster fa-3x spotify"></i> <span>Musicality</span>
+            </div>
+            <h1 style="color: white;font-size: 1.5remrem;margin-bottom: 1.5rem;font-family: 'acme';">Log in to continue.</h1>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput name="email" formControlName="email">
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+            </div>
+            <div *ngIf="(email?.touched && email?.invalid)">
+                <div *ngIf="email?.errors?.['required']" class="error">
+                    Email is required
+                </div>
+                <div *ngIf="email?.errors?.['pattern']" class="error">
+                    Enter a valid email
+                </div>
+            </div>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input [type]="hide ? 'password' : 'text'" matInput name="password" formControlName="password">
+                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                </mat-form-field>
+            </div>
+            <div *ngIf="password?.touched && password?.invalid">
+                <div *ngIf="password?.errors?.['required']" class="error">
+                    Password is required
+                </div>
+            </div>
+            <div>
+                <button class="login-btn" type="submit" [disabled]="loginDetails.invalid">LOG IN</button>
+            </div>
+        </form>
+        <div style="height: 100px;background-color: rgba(44, 44, 44, 0.715);color: white;">Don't have an account ? <a (click)="openRegister()">Sign Up</a></div>
+    </div>
+    <button id="close-btn" (click)="closeLogin()"><mat-icon>close</mat-icon></button>
+</div>

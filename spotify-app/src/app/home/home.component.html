@@ -1,0 +1,20 @@
+<video src="../../assets/tunnel_-_26475 (1440p).mp4" autoplay loop></video>
+<div id="songs-menu" >
+    <app-search (searchedSong)="onSongSearched($event)"></app-search>
+    <div id="song-list">
+        <div class="song-card slide-effect" *ngFor="let s of songList | async;let j=index">
+            <a (click)="sendSongToMiniPlayer(j)">
+                <img src="http://localhost:8091/downloadImage/{{s.trackId}}" alt="">
+                <div class="details">
+                    <span class="name">{{s.trackName}}</span><br>
+                    <span class="artist">{{s.artistName}}</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <mat-paginator (page)="OnPageChange($event)" [hidePageSize]="isPageSize" [pageSizeOptions]="[6]" [showFirstLastButtons]="true"></mat-paginator>
+    <div *ngIf="(login$ | async) as login">
+        <app-mini-player [song]="song" [str]="str" (songEvent)="songChange($event)" (exitPlayer)="closePlayer($event)"
+            *ngIf="isMiniPlayer"></app-mini-player>
+    </div>
+</div>

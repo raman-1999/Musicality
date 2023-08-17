@@ -1,0 +1,22 @@
+<video src="../../assets/design_-_31718 (1440p).mp4" autoplay loop></video>
+<div id="liked-songs">
+    <h1>Liked Songs</h1>
+    <!-- <app-search (searchedSong)="onSongSearched($event)"></app-search> -->
+    <div id="liked-song-list">
+        <div class="song-card slide-effect" *ngFor="let s of songList | async;let j=index">
+            <a (click)="sendSongToMiniPlayer(j)">
+                <img src="http://localhost:8091/downloadImage/{{s.trackId}}" alt="">
+                <div class="details">
+                    <span class="name">{{s.trackName}}</span><br>
+                    <span class="artist">{{s.artistName}}</span>
+                </div>
+            </a>
+            <button (click)="unlike(email,s.pseudoName)">
+                <i class="fa fa-heart"></i>
+            </button>
+        </div>
+    </div>
+    <mat-paginator  (page)="OnPageChange($event)" [hidePageSize]="isPageSize" [pageSizeOptions]="[6]" [showFirstLastButtons]="true"></mat-paginator>
+</div>
+<app-mini-player [song]="song" (songEvent)="songChange($event)" (exitPlayer)="closePlayer($event)"
+    *ngIf="isMiniPlayer"></app-mini-player>

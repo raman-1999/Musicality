@@ -1,0 +1,120 @@
+#register {
+    width: 700px;
+    height: 600px;
+    background-image: url('../../assets/pexels-george-milton-6954216.jpg');
+    background-size: cover;
+    background-position: 70% 0;
+    margin: 2.5rem auto 0 auto;
+    animation: display 1s 1;
+    position: relative;
+    font-family: 'acme';
+}
+
+#form {
+    overflow-y: hidden;
+    height: 100%;
+    text-align: center;
+}
+
+form {
+    width: 700px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: rgba(44, 44, 44, 0.715);
+    padding: 1.5rem 0 1rem 0;
+}
+
+@keyframes display {
+    from {
+        transform: translateY(1%);
+        opacity: 0.1;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+mat-form-field {
+    width: 360px;
+    margin-bottom: 1rem;
+    color: white;
+    border-color: white;
+    font-family: 'acme';
+}
+
+.mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
+    color: white;
+}
+
+mat-label{
+    color: white;
+    font-family: 'acme';
+}
+
+
+.error {
+    width: 360px;
+    color: red;
+    text-align: left;
+    margin: -0.5rem auto 0.5rem auto;
+}
+
+a {
+    color: #1ED760;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+#logo span {
+    font-size: 2rem;
+    margin-left: 0.3rem;
+    color: #1ED760;
+}
+
+i {
+    color: #1ED760;
+}
+
+.register-btn,.reset-btn {
+    width: 125px;
+    height: 35px;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #1ED760;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.5s all;
+    font-family: 'acme';
+}
+
+.register-btn:hover,.reset-btn:hover {
+    transform: scale(1.05);
+}
+
+.reset-btn{ background-color: rgba(128, 128, 128, 0.678);}
+
+#close-btn{
+    position: absolute;
+    top:0.5rem;
+    right: 0.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    color: white;
+}
+
+#close-btn:hover{
+    transform: rotate(180deg);
+}

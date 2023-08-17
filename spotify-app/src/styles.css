@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: 'acme';
+    src: url('../src/assets/Fonts/Acme-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'courgette';
+    src: url('../src/assets/Fonts/Courgette-Regular.ttf') format('truetype');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    user-select: none;
+    scroll-behavior: smooth !important;
+}
+
+body {
+     margin: 0; 
+     font-family: Roboto, "Helvetica Neue", sans-serif; 
+     /* background-image: url("../src/assets/silivan-munguarakarama-NrR9gn3lFKU-unsplash.jpg");
+     background-size: cover; */
+}

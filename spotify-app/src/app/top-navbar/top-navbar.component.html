@@ -1,0 +1,25 @@
+<nav class="top-nav">
+    <div id="logo">
+        <button class="spotify" (click)="toHome()">
+            <i class="fa-brands fa-napster fa-3x"></i> <span>Musicality</span>
+        </button>
+    </div>
+    <ul>
+        <li>
+            <a (click)="toSongs()" routerLinkActive="active">Songs</a>
+        </li>
+        <li *ngIf="(loginStatus$ | async) as loginStatus">
+            <a (click)="toMelodies()" *ngIf="loginStatus">My Melodies</a>
+        </li>
+        <span>|</span>
+        <li *ngIf="!(loginStatus$ | async) as loginStatus">
+            <a (click)="openLogin();"  *ngIf="loginStatus" routerLinkActive="active">Login</a>
+        </li>
+        <li *ngIf="!(loginStatus$ | async) as loginStatus">
+            <a (click)="openRegister();"  *ngIf="loginStatus">Sign Up</a>
+        </li>
+        <li *ngIf="(loginStatus$ | async) as loginStatus">
+            <a (click)="logout()"  *ngIf="loginStatus">Log Out</a>
+        </li>
+    </ul>
+</nav>
